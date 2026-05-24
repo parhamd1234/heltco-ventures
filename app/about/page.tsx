@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../_components/Reveal";
 
@@ -19,64 +20,80 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-20">
-        <Reveal>
-          <p
-            className="text-sm font-medium tracking-[0.2em] uppercase"
-            style={{ color: ACCENT }}
-          >
-            About
-          </p>
-          <h1 className="mt-6 text-[clamp(2.5rem,6vw,5rem)] font-semibold tracking-[-0.03em] leading-[1.05] max-w-4xl">
-            Canadian investors with
-            <br />
-            a <span style={{ color: ACCENT }}>medical lens.</span>
-          </h1>
-          <p className="mt-10 text-xl text-black/60 max-w-2xl leading-relaxed">
-            Heltco Ventures is a Toronto-based investment company focused on
-            private-equity investment in North American healthcare. We back
-            operators building better care delivery, smarter medical
-            technology, and the spaces where both come together.
-          </p>
-        </Reveal>
+      <section className="border-b border-black/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-24 grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-center">
+          <div>
+            <p
+              className="text-sm font-medium tracking-[0.25em] uppercase"
+              style={{ color: ACCENT }}
+            >
+              About
+            </p>
+            <h1 className="mt-6 text-[clamp(2.5rem,5vw,4.5rem)] font-semibold tracking-[-0.03em] leading-[1.05]">
+              Canadian investors
+              <br />
+              with a <span style={{ color: ACCENT }}>medical lens.</span>
+            </h1>
+            <p className="mt-8 text-lg text-black/65 max-w-xl leading-relaxed">
+              Heltco Ventures is a Toronto-based investment company focused on
+              private-equity investment in North American healthcare. We back
+              operators building better care delivery, smarter medical
+              technology, and the spaces where both come together.
+            </p>
+          </div>
+          <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-black/[0.04]">
+            <Image
+              src="/toronto.jpg"
+              alt="Toronto skyline"
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
       </section>
 
       <Reveal>
         <section className="bg-black text-white">
-          <div className="mx-auto max-w-7xl px-6 py-28 sm:py-36 grid gap-16 md:grid-cols-2">
-            <div>
-              <p
-                className="text-sm font-medium tracking-[0.2em] uppercase"
-                style={{ color: ACCENT }}
-              >
-                Where we come from
-              </p>
-              <h2 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
-                Built by operators, not bankers.
-              </h2>
-            </div>
-            <div className="text-lg text-white/70 leading-relaxed space-y-6">
-              <p>
-                We don&apos;t arrive with a spreadsheet and a deadline. Our
-                team has built and operated healthcare businesses — and that
-                shows up in how we partner.
-              </p>
-              <p>
-                When we invest, we work alongside founders on the things that
-                actually move outcomes: clinical operations, payer
-                relationships, product, talent, and growth.
-              </p>
+          <div className="mx-auto max-w-7xl px-6 py-28 sm:py-40">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+              <div>
+                <p
+                  className="text-sm font-medium tracking-[0.25em] uppercase"
+                  style={{ color: ACCENT }}
+                >
+                  Where we come from
+                </p>
+                <h2 className="mt-6 text-3xl sm:text-5xl font-semibold tracking-tight leading-tight">
+                  Built by operators,
+                  <br />
+                  not bankers.
+                </h2>
+              </div>
+              <div className="text-lg text-white/70 leading-relaxed space-y-6">
+                <p>
+                  We don&apos;t arrive with a spreadsheet and a deadline. Our
+                  team has built and operated healthcare businesses — and that
+                  shows up in how we partner.
+                </p>
+                <p>
+                  When we invest, we work alongside founders on the things that
+                  actually move outcomes: clinical operations, payer
+                  relationships, product, talent, and growth.
+                </p>
+              </div>
             </div>
           </div>
         </section>
       </Reveal>
 
-      <section className="mx-auto max-w-7xl px-6 py-28 sm:py-36">
+      <section className="mx-auto max-w-7xl px-6 py-28 sm:py-40">
         <Reveal>
           <div className="grid gap-16 md:grid-cols-2">
             <div>
               <p
-                className="text-sm font-medium tracking-[0.2em] uppercase"
+                className="text-sm font-medium tracking-[0.25em] uppercase"
                 style={{ color: ACCENT }}
               >
                 Where we work
@@ -84,14 +101,14 @@ export default function About() {
               <h2 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
                 Toronto, North America.
               </h2>
-              <p className="mt-6 text-lg text-black/60 leading-relaxed max-w-md">
+              <p className="mt-6 text-lg text-black/65 leading-relaxed max-w-md">
                 Headquartered in Toronto, Ontario. Active across Canada and
                 the United States.
               </p>
             </div>
             <div>
               <p
-                className="text-sm font-medium tracking-[0.2em] uppercase"
+                className="text-sm font-medium tracking-[0.25em] uppercase"
                 style={{ color: ACCENT }}
               >
                 What we do
@@ -99,7 +116,7 @@ export default function About() {
               <h2 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
                 Private equity in healthcare.
               </h2>
-              <p className="mt-6 text-lg text-black/60 leading-relaxed max-w-md">
+              <p className="mt-6 text-lg text-black/65 leading-relaxed max-w-md">
                 Long-term capital, hands-on partnership, and a clear exit
                 strategy from day one.
               </p>

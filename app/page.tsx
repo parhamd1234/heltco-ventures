@@ -1,87 +1,135 @@
+import Image from "next/image";
 import Link from "next/link";
-import HeroMark from "./_components/HeroMark";
 import Reveal from "./_components/Reveal";
 
 const ACCENT = "#6D28D9";
+
+const stats = [
+  { value: "Toronto", label: "Headquartered" },
+  { value: "North America", label: "Geographic focus" },
+  { value: "3–5 yrs", label: "Investment horizon" },
+  { value: "Healthcare", label: "Exclusive sector" },
+];
 
 const pillars = [
   {
     title: "Healthcare Services",
     description: "Clinical practices and patient-facing care delivery, built to scale with operational discipline.",
     href: "/focus#services",
+    image: "/focus-services.jpg",
   },
   {
     title: "Medical Technology",
     description: "Devices, software, and platforms that measurably improve accuracy and reduce cost.",
     href: "/focus#medtech",
+    image: "/focus-medtech.jpg",
   },
   {
     title: "Healthcare Real Estate",
     description: "Purpose-built clinical spaces and medical buildings.",
     href: "/focus#realestate",
+    image: "/focus-realestate.jpg",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <HeroMark />
-        <div className="relative mx-auto max-w-7xl w-full px-6 pt-16 pb-28 sm:pt-20 sm:pb-36">
-          <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-semibold tracking-[-0.03em] leading-[1.05]">
-            Hands-on investors
-            <br />
-            in <span style={{ color: ACCENT }}>health&nbsp;care.</span>
-          </h1>
-          <p className="mt-8 text-lg sm:text-xl text-black/60 max-w-xl leading-relaxed">
-            A Canadian investment company partnering with the companies
-            reshaping North American healthcare.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/approach"
-              className="inline-flex items-center rounded-full px-7 py-3 text-base font-medium text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: ACCENT }}
+      {/* Hero — split layout, photo on right */}
+      <section className="border-b border-black/[0.06]">
+        <div className="mx-auto max-w-7xl grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 px-6 py-16 lg:py-24 items-center">
+          <div>
+            <p
+              className="text-sm font-medium tracking-[0.25em] uppercase"
+              style={{ color: ACCENT }}
             >
-              Our approach
-            </Link>
-            <Link
-              href="/focus"
-              className="inline-flex items-center rounded-full px-7 py-3 text-base font-medium text-black/80 hover:text-black border border-black/15 hover:border-black/40 transition-colors"
-            >
-              Where we invest →
-            </Link>
+              Heltco Ventures
+            </p>
+            <h1 className="mt-6 text-[clamp(2.5rem,5.5vw,5rem)] font-semibold tracking-[-0.03em] leading-[1.05]">
+              Hands-on investors
+              <br />
+              in <span style={{ color: ACCENT }}>health&nbsp;care.</span>
+            </h1>
+            <p className="mt-8 text-lg sm:text-xl text-black/65 max-w-xl leading-relaxed">
+              A Canadian investment company partnering with the operators
+              reshaping North American healthcare. Long-term capital, deep
+              operational involvement.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                href="/approach"
+                className="inline-flex items-center rounded-full px-7 py-3.5 text-base font-medium text-white transition-opacity hover:opacity-90"
+                style={{ backgroundColor: ACCENT }}
+              >
+                Our approach
+              </Link>
+              <Link
+                href="/focus"
+                className="inline-flex items-center rounded-full px-7 py-3.5 text-base font-medium text-black/80 hover:text-black border border-black/15 hover:border-black/40 transition-colors"
+              >
+                Where we invest →
+              </Link>
+            </div>
           </div>
+          <div className="relative aspect-[5/6] lg:aspect-[4/5] rounded-3xl overflow-hidden bg-black/[0.04]">
+            <Image
+              src="/hero.jpg"
+              alt="Modern healthcare environment"
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats band */}
+      <section className="border-b border-black/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <Reveal>
+            <dl className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <dt className="text-xs font-medium tracking-[0.18em] uppercase text-black/50">
+                    {s.label}
+                  </dt>
+                  <dd className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight">
+                    {s.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
         </div>
       </section>
 
       {/* Manifesto — black */}
       <Reveal>
         <section className="bg-black text-white">
-          <div className="mx-auto max-w-7xl px-6 py-32 sm:py-48">
+          <div className="mx-auto max-w-7xl px-6 py-32 sm:py-44">
             <p
-              className="text-sm font-medium tracking-[0.2em] uppercase"
+              className="text-sm font-medium tracking-[0.25em] uppercase"
               style={{ color: ACCENT }}
             >
               Our thesis
             </p>
-            <p className="mt-8 text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] max-w-5xl">
+            <p className="mt-8 text-3xl sm:text-5xl font-medium tracking-tight leading-[1.18] max-w-5xl">
               The next era of healthcare is built on{" "}
               <span style={{ color: ACCENT }}>technology</span> that increases
-              accuracy and reduces cost — and on operators who know the
+              accuracy and reduces cost — and on the operators who know the
               difference.
             </p>
           </div>
         </section>
       </Reveal>
 
-      {/* Three pillars */}
-      <section className="mx-auto max-w-7xl px-6 py-32 sm:py-48">
+      {/* Three pillars with photography */}
+      <section className="mx-auto max-w-7xl px-6 py-28 sm:py-40">
         <Reveal>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
-              <p className="text-sm font-medium tracking-[0.2em] uppercase text-black/50">
+              <p className="text-sm font-medium tracking-[0.25em] uppercase text-black/50">
                 Focus
               </p>
               <h2 className="mt-4 text-4xl sm:text-6xl font-semibold tracking-tight leading-tight max-w-2xl">
@@ -90,30 +138,39 @@ export default function Home() {
                 One mission.
               </h2>
             </div>
-            <p className="text-lg text-black/60 max-w-md">
+            <p className="text-lg text-black/65 max-w-md">
               We invest across the healthcare value chain — from care delivery
-              to the technology that powers it.
+              to the technology and infrastructure that powers it.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3">
           {pillars.map((p, i) => (
-            <Reveal key={p.title} delayMs={i * 100}>
+            <Reveal key={p.title} delayMs={i * 80}>
               <Link
                 href={p.href}
-                className="group block rounded-3xl border border-black/[0.08] p-10 bg-white hover:border-black/30 transition-colors h-full"
+                className="group block h-full"
               >
-                <h3
-                  className="text-xl font-semibold"
-                  style={{ color: ACCENT }}
-                >
-                  {p.title}
-                </h3>
-                <p className="mt-4 text-black/70 leading-relaxed">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-black/[0.04]">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6">
+                    <h3 className="text-2xl font-semibold text-white">
+                      {p.title}
+                    </h3>
+                  </div>
+                </div>
+                <p className="mt-6 text-black/70 leading-relaxed">
                   {p.description}
                 </p>
-                <p className="mt-6 text-sm font-medium text-black/60 group-hover:text-black transition-colors">
+                <p className="mt-4 text-sm font-medium text-black/60 group-hover:text-black transition-colors">
                   Learn more →
                 </p>
               </Link>
@@ -125,7 +182,7 @@ export default function Home() {
       {/* CTA strip */}
       <Reveal>
         <section className="bg-black text-white">
-          <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 text-center">
+          <div className="mx-auto max-w-7xl px-6 py-28 sm:py-36 text-center">
             <h2 className="text-4xl sm:text-6xl font-semibold tracking-tight leading-tight max-w-3xl mx-auto">
               Building something we should
               <br />
@@ -137,7 +194,8 @@ export default function Home() {
             <div className="mt-12">
               <Link
                 href="/contact"
-                className="inline-flex items-center rounded-full px-7 py-3 text-base font-medium text-white border border-white/30 hover:border-white transition-colors"
+                className="inline-flex items-center rounded-full px-7 py-3.5 text-base font-medium text-white"
+                style={{ backgroundColor: ACCENT }}
               >
                 Get in touch
               </Link>

@@ -17,9 +17,9 @@ export default function Footer() {
             <Image
               src="/logo-transparent.jpg"
               alt="Heltco Ventures"
-              width={180}
-              height={60}
-              className="h-10 w-auto opacity-60"
+              width={240}
+              height={80}
+              className="h-14 w-auto opacity-70"
             />
           </Link>
           <p className="mt-6 text-sm text-black/60 max-w-xs leading-relaxed">

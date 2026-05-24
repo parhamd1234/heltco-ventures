@@ -14,16 +14,16 @@ const links = [
 export default function Nav() {
   const pathname = usePathname();
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur-md">
-      <div className="mx-auto max-w-7xl flex items-center justify-between px-6 h-20">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-black/[0.05]">
+      <div className="mx-auto max-w-7xl flex items-center justify-between px-6 h-24">
         <Link href="/" className="flex items-center" aria-label="Heltco Ventures">
           <Image
             src="/logo-transparent.jpg"
             alt="Heltco Ventures"
-            width={210}
-            height={70}
+            width={300}
+            height={100}
             priority
-            className="h-11 w-auto"
+            className="h-16 w-auto"
           />
         </Link>
         <nav className="hidden sm:flex gap-6 md:gap-9 text-sm">

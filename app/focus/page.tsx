@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../_components/Reveal";
 
@@ -23,6 +24,7 @@ const areas = [
     title: "Care delivery, built to scale.",
     body: "Clinical practices, multidisciplinary care models, and patient-facing services where operational rigor unlocks outcomes and growth.",
     items: ["Multidisciplinary medical offices", "Specialty practice groups", "Care navigation and coordination"],
+    image: "/focus-services.jpg",
   },
   {
     id: "medtech",
@@ -30,6 +32,7 @@ const areas = [
     title: "Software, devices, platforms.",
     body: "Technology that measurably improves clinical accuracy or reduces the cost of delivering care.",
     items: ["Clinical decision support", "Diagnostic devices", "Practice management platforms"],
+    image: "/focus-medtech.jpg",
   },
   {
     id: "realestate",
@@ -37,6 +40,7 @@ const areas = [
     title: "Purpose-built clinical space.",
     body: "Medical buildings and clinical real estate designed around the way modern care actually gets delivered.",
     items: ["Medical office buildings", "Diagnostic and imaging facilities", "Multidisciplinary care centres"],
+    image: "/focus-realestate.jpg",
   },
 ];
 
@@ -50,53 +54,55 @@ const specialInterests = [
 export default function Focus() {
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 pt-16 pb-24 sm:pt-20">
-        <Reveal>
-          <p
-            className="text-sm font-medium tracking-[0.2em] uppercase"
-            style={{ color: ACCENT }}
-          >
-            Investment focus
-          </p>
-          <h1 className="mt-6 text-[clamp(2.5rem,6vw,5rem)] font-semibold tracking-[-0.03em] leading-[1.05] max-w-4xl">
-            Three areas.
-            <br />
-            One <span style={{ color: ACCENT }}>mission.</span>
-          </h1>
-          <p className="mt-10 text-xl text-black/60 max-w-2xl leading-relaxed">
-            We invest across the healthcare value chain — from the people
-            delivering care to the technology and physical spaces that make
-            modern care possible.
-          </p>
-        </Reveal>
+      <section className="border-b border-black/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-24">
+          <Reveal>
+            <p
+              className="text-sm font-medium tracking-[0.25em] uppercase"
+              style={{ color: ACCENT }}
+            >
+              Investment focus
+            </p>
+            <h1 className="mt-6 text-[clamp(2.5rem,5.5vw,5rem)] font-semibold tracking-[-0.03em] leading-[1.05] max-w-4xl">
+              Three areas.
+              <br />
+              One <span style={{ color: ACCENT }}>mission.</span>
+            </h1>
+            <p className="mt-8 text-lg sm:text-xl text-black/65 max-w-2xl leading-relaxed">
+              We invest across the healthcare value chain — from the people
+              delivering care to the technology and physical spaces that make
+              modern care possible.
+            </p>
+          </Reveal>
+        </div>
       </section>
 
       {areas.map((area, i) => (
         <section
           key={area.id}
           id={area.id}
-          className={i % 2 === 0 ? "bg-black text-white" : "bg-white text-black"}
+          className={i % 2 === 0 ? "bg-white text-black" : "bg-black text-white"}
         >
-          <div className="mx-auto max-w-7xl px-6 py-28 sm:py-36">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-36">
             <Reveal>
-              <div className="grid gap-12 md:grid-cols-[1fr_1.2fr] items-start">
+              <div
+                className={`grid gap-12 lg:gap-16 items-center lg:grid-cols-[1fr_1fr] ${
+                  i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
+                }`}
+              >
                 <div>
                   <p
-                    className="text-sm font-medium tracking-[0.2em] uppercase"
+                    className="text-sm font-medium tracking-[0.25em] uppercase"
                     style={{ color: ACCENT }}
                   >
                     {area.eyebrow}
                   </p>
-                  <h2
-                    className={`mt-6 text-4xl sm:text-5xl font-semibold tracking-tight leading-tight max-w-md`}
-                  >
+                  <h2 className="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight leading-tight max-w-md">
                     {area.title}
                   </h2>
-                </div>
-                <div>
                   <p
-                    className={`text-lg leading-relaxed ${
-                      i % 2 === 0 ? "text-white/70" : "text-black/70"
+                    className={`mt-6 text-lg leading-relaxed max-w-lg ${
+                      i % 2 === 1 ? "text-white/70" : "text-black/70"
                     }`}
                   >
                     {area.body}
@@ -106,7 +112,7 @@ export default function Focus() {
                       <li
                         key={item}
                         className={`flex gap-3 text-base ${
-                          i % 2 === 0 ? "text-white/80" : "text-black/80"
+                          i % 2 === 1 ? "text-white/80" : "text-black/80"
                         }`}
                       >
                         <span
@@ -119,16 +125,25 @@ export default function Focus() {
                     ))}
                   </ul>
                 </div>
+                <div className="relative aspect-[5/4] rounded-2xl overflow-hidden bg-black/[0.04]">
+                  <Image
+                    src={area.image}
+                    alt={area.eyebrow}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </Reveal>
           </div>
         </section>
       ))}
 
-      <section className="mx-auto max-w-7xl px-6 py-28 sm:py-36">
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:py-36">
         <Reveal>
           <p
-            className="text-sm font-medium tracking-[0.2em] uppercase text-black/50"
+            className="text-sm font-medium tracking-[0.25em] uppercase text-black/50"
           >
             Special interests
           </p>
