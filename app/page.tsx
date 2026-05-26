@@ -88,13 +88,15 @@ export default function Home() {
             </div>
           </div>
           <div className="relative aspect-[5/6] lg:aspect-[4/5] rounded-3xl overflow-hidden bg-black/[0.04]">
-            <Image
-              src="/hero.jpg"
-              alt="Modern healthcare environment"
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover ken-burns"
+            <video
+              src="/hero.mp4"
+              poster="/hero.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         </div>
